@@ -1,0 +1,26 @@
+{
+    "name": "JSON.Party API",
+    "slug": "api.jsonparty",
+    "port": 10456,
+    "routes": [
+        {
+            "request": {
+                "method": "post",
+                "path": "/graphql.json"
+            },
+            "steps": [
+                {
+                    "type": "remote",
+                    "service": "json-party-data",
+                    "method": "runQuery",
+                    "args": [
+                        "$req.body.query"
+                    ]
+                }
+            ],
+            "response": {
+                "content_type": "application/json"
+            }
+        }
+    ]
+}
